@@ -1,12 +1,12 @@
 <h2>Add User</h2>
 
 <div>
-    <form>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="user-form">
         <label>Name: <input type="text" name="name"></label>
         <label>Email: <input type="text" name="email"></label>
         <label>Contact Number: <input type="text" name="contact-number"></label>
         <label>Upload Photo <input type="file" name="user-photo"></label>
 
-        <button type="submit">Add User</button>
+        <button type="submit" [disabled]="userForm.invalid" >Add User</button>
     </form>
 </div>

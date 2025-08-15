@@ -1,0 +1,12 @@
+<h2>Users</h2>
+
+<div class="parent">
+  <div class="child">Name</div>
+  <div class="child">Email</div>
+  <div class="child">Contact Number</div>
+  <div class="child">Image</div>
+</div>
+
+@for (user of userItems(); track $index) {
+    <app-user-item [user]="user" />
+}

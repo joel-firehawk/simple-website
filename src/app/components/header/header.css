@@ -9,10 +9,11 @@ header {
 }
 
 nav {
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 55%;
+    width: 58%;
 }
 
 a {

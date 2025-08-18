@@ -13,10 +13,8 @@ export class UserService {
     return this.http.get<{ data: Array<User> }>(url);
   }
 
-  addUser(newUser: any) {
-    const url = `http://localhost:8080/users/post`
-    return this.http.post<{ message: string }>(url, newUser, {
-      headers: { 'Content-Type': 'application/json' }
-    });
+  addUser(formData: FormData) {
+    const url = `http://localhost:8080/users/post`;
+    return this.http.post<{ message: string }>(url, formData);
   }
 }

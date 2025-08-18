@@ -11,17 +11,24 @@ import { FormsModule } from '@angular/forms';
 export class AddUser {
   constructor(private userService: UserService) {}
 
-  onSubmit(form: any) {
+  onSubmit(form: any, fileInput: HTMLInputElement) {
     if (form.invalid) return;
 
-    const newUser = form.value;
-    ['name', 'email', 'contactNumber']
-    .forEach(field => newUser[field] = Number(newUser[field]));
+    const formData = new FormData();
+    formData.append('name', form.value.name);
+    formData.append('email', form.value.email);
+    formData.append('contactNumber', form.value.contactNumber);
 
-    this.userService.addUser(newUser).subscribe({
+    const file = fileInput.files?.[0];
+    if (file) {
+      formData.append('imageURL', file); 
+    }
+
+    this.userService.addUser(formData).subscribe({
       next: () => {
         alert('User added');
         form.resetForm();
+        fileInput.value = ''; // reset file input
       },
       error: err => console.error(err)
     });

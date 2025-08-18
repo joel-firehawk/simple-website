@@ -21,7 +21,7 @@ export class AddUser {
 
     const file = fileInput.files?.[0];
     if (file) {
-      formData.append('imageURL', file); 
+      formData.append('image', file); 
     }
 
     this.userService.addUser(formData).subscribe({
